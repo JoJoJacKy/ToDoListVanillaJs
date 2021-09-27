@@ -1,0 +1,241 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Colors */
+:root {
+    --primary-color: #30336b;
+    --secondary-color: #c7ecee; 
+    --light-color: #dff9fb;
+}
+
+body {
+    background-color: var(--light-color);
+}
+
+.main-content.container-u {
+    height: 1300px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.navbar {
+    height: 100px;
+    background-color: var(--primary-color);
+    width: 100%;
+}
+
+.navbar h1 {
+    margin: 0;
+    color: var(--light-color);
+}
+
+/* ========== SIDEBAR STYLING ========== */
+.sidebar {
+    min-width: 255px;
+    background-color: var(--light-color);
+}
+
+h6 {
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+/* .sidebar-projects {
+    border: 1px solid red;
+} */
+
+.sidebar-card {
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.sidebar-card-title {
+    margin-left: 10px;
+    justify-self: start;
+    color: var(--light-color);
+}
+
+.sidebar-card-icon {
+    margin-left: 5px;
+    height: 20px;
+    width: 20px;
+    /* Changing the color of the SVG */
+    filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg) brightness(112%) contrast(97%);
+}
+
+.sidebar-card-delete-icon {
+    visibility: hidden;
+    margin-right: 5px;
+    height: 20px;
+    width: 20px;
+    /* Changing the color of the SVG */
+    filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg) brightness(112%) contrast(97%);
+}
+    /* Hover over parent, reveal delete icon */
+    .sidebar-card:hover .sidebar-card-delete-icon  {
+        visibility: visible;
+    }
+
+    .sidebar-card-delete-icon:hover {
+        transform: scale(2.20);
+    }
+
+/* ========== MAIN BODY STYLING ========== */
+.main-body {
+    background-color: var(--light-color);
+    min-width: 400px;
+}
+
+/* ========== PROJECT STYLING ========== */
+/* .project {
+
+} */
+
+/* .selected-project {
+
+} */
+
+.project-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.project-title {
+    margin: 0;
+}
+
+.project-title-edit-icon {
+    display: inline;
+    margin-left: 10px;
+    height: 22px;
+    width: 22px;
+    filter: invert(22%) sepia(10%) saturate(3748%) hue-rotate(199deg) brightness(89%) contrast(94%);
+}
+
+.project-list {
+    color: var(--light-color);
+}
+
+
+.project-list-item {
+    height: 35px;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.project-list-item-icon {
+    margin-top: 5px;
+    height: 20px;
+    width: 20px;
+    /* Changing the color of the SVG */
+    filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg) brightness(112%) contrast(97%);
+}
+
+.project-list-item-title {
+    justify-self: start;
+}
+
+.project-list-item-delete {
+    visibility: hidden;
+    height: 20px;
+    width: 20px;
+    /* Changing the color of the SVG */
+    filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg) brightness(112%) contrast(97%);
+}
+    /* Hover over parent, reveal delete icon */
+    .project-list-item:hover .project-list-item-delete  {
+        visibility: visible;
+    }
+
+    .project-list-item-delete:hover {
+        transform: scale(2.20);
+    }
+
+
+.project-list-add-item {
+    height: 35px;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    justify-items: center;
+    align-items: center;
+    color: var(--light-color);
+}
+    .project-list-add-item img {
+        margin-bottom: 3px;
+        height: 19px;
+        width: 19px;
+    }
+
+/* ========== TASKS DETAILS STYLING ========== */
+
+.selected-task {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    min-height: 200px;
+    position: relative;
+}
+
+.selected-task-back-icon {
+    position: absolute;
+    left: 4%;
+    top: 6%;
+    height: 25px;
+    width: 25px;
+    filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg) brightness(112%) contrast(97%);
+}
+
+.selected-task-edit-icon {
+    position: absolute;
+    left: 12%;
+    top: 6%;
+    height: 25px;
+    width: 25px;
+    filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg) brightness(112%) contrast(97%);
+}
+
+.selected-task-delete-icon {
+    position: absolute;
+    right: 4%;
+    top: 6%;
+    height: 25px;
+    width: 25px;
+    filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg) brightness(112%) contrast(97%);
+}
+
+/* ========== FORM STYLING ========== */
+
+.task-project-form {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    min-height: 200px;
+    position: relative;
+}
+
+.task-project-form > input,
+.task-project-form > textarea,
+.task-project-form > select {
+    color: var(--primary-color);
+}
+
