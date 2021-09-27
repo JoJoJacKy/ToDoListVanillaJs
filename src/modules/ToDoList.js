@@ -53,11 +53,7 @@ tast2.setDescription("deeznuts");
 tast2.setPriority("Low");
 
 tempProject1.addTask(tast1);
-tempProject2.addTask(tast1);
-tempProject1.addTask(tast2);
 tempProject2.addTask(tast2);
-tempProject3.addTask(tast1);
-tempProject3.addTask(tast2);
 tempProject3.addTask(tast3);
 
 ToDoListTemp.addProject(tempProject1);

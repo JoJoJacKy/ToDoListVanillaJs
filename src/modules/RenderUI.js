@@ -47,13 +47,6 @@ function grabTaskData(task) {
     return taskObjData;
 }
 
-function setProjectData(project, inputs) {
-
-}
-
-function setTaskData(task, inputs) {
-
-}
 
 function updateCurrentProject(selectedProject) {
     currentProject = selectedProject;
@@ -195,7 +188,8 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
             <div class="project-list-item-title">${name}</div>
             <img src="images/delete.svg" alt="" class="project-list-item-delete">
         `
-        projectTaskListContainer.appendChild(projectListItem);
+        // projectTaskListContainer.appendChild(projectListItem);
+        projectTaskListContainer.insertBefore(projectListItem, projectTaskListContainer.firstChild) // Inserts above new project
 
     });
 
@@ -381,6 +375,10 @@ function projectSelected(projData) {
 
 function projectDeleted(projTitle) {
     console.log(`Deleted ${projTitle}!`);
+    ToDoListTemp.deleteProject(projTitle);
+    toDoListProjectsTempData = ToDoListTemp.getProjects();
+    const placeHolder = document.createElement('div');
+    currentPageRenderer(toDoListProjectsTempData, placeHolder);
 }
 
 function taskSelected(task, projData) {
@@ -390,6 +388,8 @@ function taskSelected(task, projData) {
 
 function taskDeleted(taskName) {
     console.log(`Deleted ${taskName}!`);
+    currentProject.deleteTask(taskName);
+    currentPageRenderer(toDoListProjectsTempData, renderSelectedProjectTasks(currentProject, taskSelected, taskDeleted));
 }
 
 // These functions are called on Submit of the forms
@@ -415,6 +415,7 @@ function submitTask(taskName, taskDesc, taskPriority) {
         newTask.setDescription(taskDesc);
         newTask.setPriority(taskPriority);
         currentProject.addTask(newTask);
+        updateCurrentTask(null);
         backToProjectTasks(currentProject);
     } else {
         currentProject.updateTask(currentTask, taskName, taskDesc, taskPriority);
