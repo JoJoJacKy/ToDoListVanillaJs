@@ -170,6 +170,13 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
     `
     mainContentContainer.appendChild(titleContainer);
 
+    titleContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('project-title-edit-icon')) {
+            console.log('cliked title edit icon!');
+            currentPageRenderer(toDoListProjectsTempData, renderProjectForm(cancelForm, submitProject, e.target.previousElementSibling.innerText));
+        }
+    });
+
     const projectTaskListContainer = document.createElement('div');
     projectTaskListContainer.classList.add('project-list', 'u-full-width');
     mainContentContainer.appendChild(projectTaskListContainer);
@@ -270,14 +277,14 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
     return selectedTaskContainer;
 }
 
-function renderProjectForm(cancelFunc, submitFunc) {
+function renderProjectForm(cancelFunc, submitFunc, projectTitle = '') {
     const formContainer = document.createElement('form');
     formContainer.classList.add('task-project-form', 'my-4');
     formContainer.innerHTML = `
         <h6 class="text-center">New Project</h6>
 
         <label for="projectName">Project Name</label>
-        <input type="text" class="u-full-width project-input" id="projectName">
+        <input type="text" class="u-full-width project-input" id="projectName" value="${projectTitle}">
         
         <button class="button-primary" id="cancel">Cancel</button>
         <input class="button-primary" type="submit" value="submit">
@@ -286,7 +293,7 @@ function renderProjectForm(cancelFunc, submitFunc) {
     formContainer.addEventListener('submit', (e) => {
         e.preventDefault();
         console.log('submitted!');
-        submitProject(e.path[0].childNodes[5].value); // Passing the text within the project name input
+        submitFunc(e.path[0].childNodes[5].value); // Passing the text within the project name input
     });
 
     formContainer.querySelector('#cancel').addEventListener('click', (e) => {
@@ -383,9 +390,17 @@ function taskDeleted(taskName) {
     // Calls the Data Handler functions of setProject & setTask
     // After creating the new project or task, calls pageRender
 function submitProject(projectName) {
-    ToDoListTemp.addProject(new Project(projectName));
-    const placeHolder = document.createElement('div');
-    currentPageRenderer(toDoListProjectsTempData, placeHolder);
+    if (currentProject === '') {
+        ToDoListTemp.addProject(new Project(projectName));
+        const placeHolder = document.createElement('div');
+        currentPageRenderer(toDoListProjectsTempData, placeHolder);
+    } else {
+        const newCurrentProj = ToDoListTemp.updateProject(currentProject, projectName);
+        updateCurrentProject(newCurrentProj);
+        const placeHolder = document.createElement('div');
+        currentPageRenderer(toDoListProjectsTempData, placeHolder);
+    }
+
 }
 
 function submitTask() {
