@@ -15,7 +15,8 @@ const addNewProjectDOM = document.querySelector('.sidebar-card-add-project');
 function newProjectListener(addNewProject) {
     addNewProject.addEventListener('click', (e) => {
         console.log('clicked add new project');
-        currentPageRenderer(toDoListProjectsTempData, renderProjectForm(cancelForm, submitProject)); 
+        updateCurrentProject(null);
+        currentPageRenderer(toDoListProjectsTempData, renderProjectForm(cancelForm, submitProject));
     });
 }
 
@@ -23,11 +24,11 @@ function newProjectListener(addNewProject) {
 /* ========== DATA HANDLER FUNCTIONS ========== */
 
 // Grabbing Projects From The ToDoList
-const toDoListProjectsTempData = ToDoListTemp.getProjects();
+let toDoListProjectsTempData = ToDoListTemp.getProjects();
 
 // Current Projects and Tasks
-let currentProject = '';
-let currentTask = '';
+let currentProject = null;
+let currentTask = null;
 
 // Get Project Data: Returns Object
 function grabProjectData(project) {
@@ -271,6 +272,7 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
         }
         if (e.target.classList.contains('selected-task-delete-icon')) {
             console.log('clicked delete!');
+            deleteFunc(name);
         }
     });
 
@@ -354,6 +356,10 @@ function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
     formContainer.addEventListener('submit', (e) => {
         e.preventDefault();
         console.log('submitted!');
+        const taskName = e.path[0].childNodes[5].value // name
+        const taskDesc = e.path[1].childNodes[1].childNodes[9].value // desc
+        const taskPriority = e.path[1].childNodes[1].childNodes[13].options[e.path[1].childNodes[1].childNodes[13].selectedIndex].innerText // prior
+        submitTask(taskName, taskDesc, taskPriority);
     });
 
     formContainer.querySelector('#cancel').addEventListener('click', (e) => {
@@ -379,7 +385,7 @@ function projectDeleted(projTitle) {
 
 function taskSelected(task, projData) {
     console.log(`Selected ${task.name}!`);
-    currentPageRenderer(toDoListProjectsTempData, renderSelectedTask(task, backToProjectTasks, editTask, deleteTask, projData));
+    currentPageRenderer(toDoListProjectsTempData, renderSelectedTask(task, backToProjectTasks, editTask, taskDeleted, projData));
 }
 
 function taskDeleted(taskName) {
@@ -390,38 +396,37 @@ function taskDeleted(taskName) {
     // Calls the Data Handler functions of setProject & setTask
     // After creating the new project or task, calls pageRender
 function submitProject(projectName) {
-    if (currentProject === '') {
+    if (currentProject === null) {
         ToDoListTemp.addProject(new Project(projectName));
+        toDoListProjectsTempData = ToDoListTemp.getProjects(); // Needed to re-initialize the projects
         const placeHolder = document.createElement('div');
         currentPageRenderer(toDoListProjectsTempData, placeHolder);
     } else {
-        const newCurrentProj = ToDoListTemp.updateProject(currentProject, projectName);
-        updateCurrentProject(newCurrentProj);
+        ToDoListTemp.updateProject(currentProject, projectName);
+        updateCurrentProject(null);
         const placeHolder = document.createElement('div');
         currentPageRenderer(toDoListProjectsTempData, placeHolder);
     }
-
 }
 
-function submitTask() {
-    return
-}
-
-function editProject() {
-    return
+function submitTask(taskName, taskDesc, taskPriority) {
+    if (currentTask === null) {
+        const newTask = new Task(taskName);
+        newTask.setDescription(taskDesc);
+        newTask.setPriority(taskPriority);
+        currentProject.addTask(newTask);
+        backToProjectTasks(currentProject);
+    } else {
+        currentProject.updateTask(currentTask, taskName, taskDesc, taskPriority);
+        updateCurrentTask(null);
+        backToProjectTasks(currentProject);
+    }
 }
 
 function editTask(taskDetailsObj) {
     currentPageRenderer(toDoListProjectsTempData, renderTaskForm(cancelForm, submitTask, taskDetailsObj));
 }
 
-function deleteProject() {
-    return
-}
-
-function deleteTask() {
-    return
-}
 
 function cancelForm() {
     const placeHolder = document.createElement('div');

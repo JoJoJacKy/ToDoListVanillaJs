@@ -25,10 +25,9 @@ class ToDoList {
 
     updateProject(currentProject, newProjectName) {
         const proj = this.projects.find((project) => project.getTitle() === currentProject.getTitle());
-        this.deleteProject(currentProject.getTitle);
+        this.deleteProject(currentProject.getTitle());
         proj.setTitle(newProjectName);
         this.projects.push(proj);
-        return proj;
     }
 
 }
