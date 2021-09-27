@@ -27,6 +27,7 @@ const toDoListProjectsTempData = ToDoListTemp.getProjects();
 
 // Current Projects and Tasks
 let currentProject = '';
+let currentTask = '';
 
 // Get Project Data: Returns Object
 function grabProjectData(project) {
@@ -55,10 +56,12 @@ function setTaskData(task, inputs) {
 
 function updateCurrentProject(selectedProject) {
     currentProject = selectedProject;
+    console.log('updated current project!');
 }
 
-function updateCurrentTask() {
-
+function updateCurrentTask(selectedTask) {
+    currentTask = selectedTask;
+    console.log('updated current task!');
 }
 
 /* ========== INITIALIZE PAGE LOAD ========== */
@@ -144,6 +147,7 @@ function renderSideProject(project, selectedFunc, deletedFunc) {
         if (e.target.classList.contains('sidebar-card-delete-icon')) {
             deletedFunc(title);
         } else {
+            updateCurrentProject(project);
             selectedFunc(data);
         }
     });
@@ -207,6 +211,7 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
         } else {
             taskData.forEach(task => {
                 if (e.target.innerText === task.name) {
+                    updateCurrentTask(task);
                     selectedFunc(task, projectData);
                 }
             })
