@@ -1,5 +1,5 @@
-import { initTest } from './modules/RenderUI';
+import { init } from './modules/RenderUI';
 
-initTest();
+init();
 
-console.log("cringe");
+console.log("index cringe");
