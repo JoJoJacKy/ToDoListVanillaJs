@@ -1,21 +1,24 @@
-import Project from './Project';
-import Task from './Task';
+import Project from "./Project";
+import Task from "./Task";
 
-import ToDoListTemp from './ToDoList';
+import ToDoListTemp from "./ToDoList";
 
 /* ========== CACHEDOM ========== */
-const sideBarProjectsDOM = document.querySelector('.sidebar-projects');
-const mainBodyDOM = document.querySelector('.main-body');
-const addNewProjectDOM = document.querySelector('.sidebar-card-add-project');
+const sideBarProjectsDOM = document.querySelector(".sidebar-projects");
+const mainBodyDOM = document.querySelector(".main-body");
+const addNewProjectDOM = document.querySelector(".sidebar-card-add-project");
 
 /* ========== EVENT LISTENERS GLOBAL ========== */
 
 // Clicking ADD NEW PROJECT loads the Project Form
 function newProjectListener(addNewProject) {
-  addNewProject.addEventListener('click', (e) => {
-    console.log('clicked add new project');
+  addNewProject.addEventListener("click", (e) => {
+    console.log("clicked add new project");
     updateCurrentProject(null);
-    currentPageRenderer(toDoListProjectsTempData, renderProjectForm(cancelForm, submitProject));
+    currentPageRenderer(
+      toDoListProjectsTempData,
+      renderProjectForm(cancelForm, submitProject)
+    );
   });
 }
 
@@ -47,12 +50,12 @@ function grabTaskData(task) {
 
 function updateCurrentProject(selectedProject) {
   currentProject = selectedProject;
-  console.log('updated current project!');
+  console.log("updated current project!");
 }
 
 function updateCurrentTask(selectedTask) {
   currentTask = selectedTask;
-  console.log('updated current task!');
+  console.log("updated current task!");
 }
 
 /* ========== INITIALIZE PAGE LOAD ========== */
@@ -64,7 +67,7 @@ function init() {
 
 /* ========== INITIAL AND CURRENT RENDERING ========== */
 function initialPageRender(projects) {
-  const placeHolder = document.createElement('div');
+  const placeHolder = document.createElement("div");
   renderSideBar(sideBarProjectsDOM, projects);
   renderToMainBody(mainBodyDOM, placeHolder);
   // renderToMainBody(mainBodyDOM, renderSelectedProjectTasks(toDoListProjectsTempData[0], taskSelected, taskDeleted));
@@ -94,7 +97,11 @@ function removeAllChildrenNodesMain(parent) {
 function renderSideBar(side, projects) {
   removeAllChildrenNodesSide(side);
   projects.forEach((project) => {
-    const sideprojectcard = renderSideProject(project, projectSelected, projectDeleted);
+    const sideprojectcard = renderSideProject(
+      project,
+      projectSelected,
+      projectDeleted
+    );
     // side.appendChild(sideprojectcard); // Inserts below new project
     side.insertBefore(sideprojectcard, side.firstChild); // Inserts above new project
   });
@@ -116,12 +123,12 @@ function renderSideProject(project, selectedFunc, deletedFunc) {
   // const tasks = data.tasks;
 
   // Organizing Element
-  const cardContainer = document.createElement('div');
-  cardContainer.classList.add('container', 'u-full-width', 'py-1');
+  const cardContainer = document.createElement("div");
+  cardContainer.classList.add("container", "u-full-width", "py-1");
 
   // Actual Card Element that we use an event listener on
-  const sideBarCard = document.createElement('div');
-  sideBarCard.classList.add('sidebar-card');
+  const sideBarCard = document.createElement("div");
+  sideBarCard.classList.add("sidebar-card");
   sideBarCard.innerHTML = `
         <img src="images/list.svg" alt="" class="sidebar-card-icon">
         <div class="sidebar-card-title text-center">
@@ -132,8 +139,8 @@ function renderSideProject(project, selectedFunc, deletedFunc) {
   cardContainer.appendChild(sideBarCard);
 
   // Handles Selection and Deletion
-  sideBarCard.addEventListener('click', (e) => {
-    if (e.target.classList.contains('sidebar-card-delete-icon')) {
+  sideBarCard.addEventListener("click", (e) => {
+    if (e.target.classList.contains("sidebar-card-delete-icon")) {
       deletedFunc(title);
     } else {
       updateCurrentProject(project);
@@ -148,26 +155,33 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
   const { title } = projectData;
   const taskData = projectData.tasks;
 
-  const mainContentContainer = document.createElement('div');
-  mainContentContainer.classList.add('py-1');
+  const mainContentContainer = document.createElement("div");
+  mainContentContainer.classList.add("py-1");
 
-  const titleContainer = document.createElement('div');
-  titleContainer.classList.add('project-title-container');
+  const titleContainer = document.createElement("div");
+  titleContainer.classList.add("project-title-container");
   titleContainer.innerHTML = `
         <h6 class="text-center project-title">${title}</h6>
         <img src="images/edit.svg" alt="" class="project-title-edit-icon">
     `;
   mainContentContainer.appendChild(titleContainer);
 
-  titleContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('project-title-edit-icon')) {
-      console.log('cliked title edit icon!');
-      currentPageRenderer(toDoListProjectsTempData, renderProjectForm(cancelForm, submitProject, e.target.previousElementSibling.innerText));
+  titleContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("project-title-edit-icon")) {
+      console.log("cliked title edit icon!");
+      currentPageRenderer(
+        toDoListProjectsTempData,
+        renderProjectForm(
+          cancelForm,
+          submitProject,
+          e.target.previousElementSibling.innerText
+        )
+      );
     }
   });
 
-  const projectTaskListContainer = document.createElement('div');
-  projectTaskListContainer.classList.add('project-list', 'u-full-width');
+  const projectTaskListContainer = document.createElement("div");
+  projectTaskListContainer.classList.add("project-list", "u-full-width");
   mainContentContainer.appendChild(projectTaskListContainer);
 
   taskData.forEach((task) => {
@@ -175,8 +189,8 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
     // const description = task.description;
     // const priority = task.priority; // Maybe could add some sick UI to show priority
 
-    const projectListItem = document.createElement('div');
-    projectListItem.classList.add('project-list-item', 'my-1');
+    const projectListItem = document.createElement("div");
+    projectListItem.classList.add("project-list-item", "my-1");
 
     projectListItem.innerHTML = `
             <img src="images/right-arrow.svg" alt="" class="project-list-item-icon">
@@ -184,12 +198,15 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
             <img src="images/delete.svg" alt="" class="project-list-item-delete">
         `;
     // projectTaskListContainer.appendChild(projectListItem);
-    projectTaskListContainer.insertBefore(projectListItem, projectTaskListContainer.firstChild); // Inserts above new project
+    projectTaskListContainer.insertBefore(
+      projectListItem,
+      projectTaskListContainer.firstChild
+    ); // Inserts above new project
   });
 
   // Making sure the last child is the 'Add a new task' task
-  const addNewItemLast = document.createElement('div');
-  addNewItemLast.classList.add('project-list-add-item');
+  const addNewItemLast = document.createElement("div");
+  addNewItemLast.classList.add("project-list-add-item");
   addNewItemLast.innerHTML = `
         <img src="images/plus.svg" alt="" class="project-list-item-icon">
         <div class="project-list-item-title">Add a new task</div>
@@ -197,12 +214,18 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
   mainContentContainer.appendChild(addNewItemLast);
 
   // Event Handling; CHEESING "Add a new task" task
-  mainContentContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('project-list-item-delete')) {
+  mainContentContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("project-list-item-delete")) {
       deletedFunc(e.target.previousElementSibling.innerText); // Gets the title of the task
-    } else if (e.target.classList.contains('project-list-add-item') || e.target.innerText === 'Add a new task') {
-      console.log('adding new item!');
-      currentPageRenderer(toDoListProjectsTempData, renderTaskForm(cancelForm, submitTask));
+    } else if (
+      e.target.classList.contains("project-list-add-item") ||
+      e.target.innerText === "Add a new task"
+    ) {
+      console.log("adding new item!");
+      currentPageRenderer(
+        toDoListProjectsTempData,
+        renderTaskForm(cancelForm, submitTask)
+      );
     } else {
       taskData.forEach((task) => {
         if (e.target.innerText === task.name) {
@@ -221,8 +244,8 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
   const { description } = task;
   const { priority } = task;
 
-  const selectedTaskContainer = document.createElement('div');
-  selectedTaskContainer.classList.add('selected-task', 'py-4', 'my-5');
+  const selectedTaskContainer = document.createElement("div");
+  selectedTaskContainer.classList.add("selected-task", "py-4", "my-5");
 
   selectedTaskContainer.innerHTML = `
         <img src="images/back-button.svg" alt="" class="selected-task-back-icon">
@@ -242,12 +265,12 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
         </div>
     `;
 
-  selectedTaskContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('selected-task-back-icon')) {
-      console.log('clicked back!');
+  selectedTaskContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("selected-task-back-icon")) {
+      console.log("clicked back!");
       backFunc(currentProj);
     }
-    if (e.target.classList.contains('selected-task-edit-icon')) {
+    if (e.target.classList.contains("selected-task-edit-icon")) {
       // Need to pass editFunc an object filled with the details of the current task
       const taskDetailsObj = {};
       const { childNodes } = e.target.parentNode;
@@ -256,8 +279,8 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
       taskDetailsObj.priority = childNodes[11].innerText;
       editFunc(taskDetailsObj);
     }
-    if (e.target.classList.contains('selected-task-delete-icon')) {
-      console.log('clicked delete!');
+    if (e.target.classList.contains("selected-task-delete-icon")) {
+      console.log("clicked delete!");
       deleteFunc(name);
     }
   });
@@ -265,9 +288,9 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
   return selectedTaskContainer;
 }
 
-function renderProjectForm(cancelFunc, submitFunc, projectTitle = '') {
-  const formContainer = document.createElement('form');
-  formContainer.classList.add('task-project-form', 'my-4');
+function renderProjectForm(cancelFunc, submitFunc, projectTitle = "") {
+  const formContainer = document.createElement("form");
+  formContainer.classList.add("task-project-form", "my-4");
   formContainer.innerHTML = `
         <h6 class="text-center">New Project</h6>
 
@@ -278,15 +301,15 @@ function renderProjectForm(cancelFunc, submitFunc, projectTitle = '') {
         <input class="button-primary" type="submit" value="submit">
     `;
 
-  formContainer.addEventListener('submit', (e) => {
+  formContainer.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log('submitted!');
+    console.log("submitted!");
     submitFunc(e.path[0].childNodes[5].value); // Passing the text within the project name input
   });
 
-  formContainer.querySelector('#cancel').addEventListener('click', (e) => {
+  formContainer.querySelector("#cancel").addEventListener("click", (e) => {
     e.preventDefault();
-    console.log('cancelled!');
+    console.log("cancelled!");
     cancelFunc();
   });
 
@@ -294,8 +317,8 @@ function renderProjectForm(cancelFunc, submitFunc, projectTitle = '') {
 }
 
 function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
-  const formContainer = document.createElement('form');
-  formContainer.classList.add('task-project-form', 'my-4');
+  const formContainer = document.createElement("form");
+  formContainer.classList.add("task-project-form", "my-4");
   if (Object.keys(taskDetailsObject).length === 0) {
     formContainer.innerHTML = `
         <h6 class="text-center">New Task</h6>
@@ -338,18 +361,21 @@ function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
     `;
   }
 
-  formContainer.addEventListener('submit', (e) => {
+  formContainer.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log('submitted!');
+    console.log("submitted!");
     const taskName = e.path[0].childNodes[5].value; // name
     const taskDesc = e.path[1].childNodes[1].childNodes[9].value; // desc
-    const taskPriority = e.path[1].childNodes[1].childNodes[13].options[e.path[1].childNodes[1].childNodes[13].selectedIndex].innerText; // prior
+    const taskPriority =
+      e.path[1].childNodes[1].childNodes[13].options[
+        e.path[1].childNodes[1].childNodes[13].selectedIndex
+      ].innerText; // prior
     submitTask(taskName, taskDesc, taskPriority);
   });
 
-  formContainer.querySelector('#cancel').addEventListener('click', (e) => {
+  formContainer.querySelector("#cancel").addEventListener("click", (e) => {
     e.preventDefault();
-    console.log('cancelled!');
+    console.log("cancelled!");
     cancelFunc();
   });
 
@@ -361,26 +387,41 @@ function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
 // These Functions will call pageRenderer()
 function projectSelected(projData) {
   console.log(`Selected ${projData.title}!`);
-  currentPageRenderer(toDoListProjectsTempData, renderSelectedProjectTasks(projData, taskSelected, taskDeleted));
+  currentPageRenderer(
+    toDoListProjectsTempData,
+    renderSelectedProjectTasks(projData, taskSelected, taskDeleted)
+  );
 }
 
 function projectDeleted(projTitle) {
   console.log(`Deleted ${projTitle}!`);
   ToDoListTemp.deleteProject(projTitle);
   toDoListProjectsTempData = ToDoListTemp.getProjects();
-  const placeHolder = document.createElement('div');
+  const placeHolder = document.createElement("div");
   currentPageRenderer(toDoListProjectsTempData, placeHolder);
 }
 
 function taskSelected(task, projData) {
   console.log(`Selected ${task.name}!`);
-  currentPageRenderer(toDoListProjectsTempData, renderSelectedTask(task, backToProjectTasks, editTask, taskDeleted, projData));
+  currentPageRenderer(
+    toDoListProjectsTempData,
+    renderSelectedTask(
+      task,
+      backToProjectTasks,
+      editTask,
+      taskDeleted,
+      projData
+    )
+  );
 }
 
 function taskDeleted(taskName) {
   console.log(`Deleted ${taskName}!`);
   currentProject.deleteTask(taskName);
-  currentPageRenderer(toDoListProjectsTempData, renderSelectedProjectTasks(currentProject, taskSelected, taskDeleted));
+  currentPageRenderer(
+    toDoListProjectsTempData,
+    renderSelectedProjectTasks(currentProject, taskSelected, taskDeleted)
+  );
 }
 
 // These functions are called on Submit of the forms
@@ -390,12 +431,12 @@ function submitProject(projectName) {
   if (currentProject === null) {
     ToDoListTemp.addProject(new Project(projectName));
     toDoListProjectsTempData = ToDoListTemp.getProjects(); // Needed to re-initialize the projects
-    const placeHolder = document.createElement('div');
+    const placeHolder = document.createElement("div");
     currentPageRenderer(toDoListProjectsTempData, placeHolder);
   } else {
     ToDoListTemp.updateProject(currentProject, projectName);
     updateCurrentProject(null);
-    const placeHolder = document.createElement('div');
+    const placeHolder = document.createElement("div");
     currentPageRenderer(toDoListProjectsTempData, placeHolder);
   }
 }
@@ -416,16 +457,22 @@ function submitTask(taskName, taskDesc, taskPriority) {
 }
 
 function editTask(taskDetailsObj) {
-  currentPageRenderer(toDoListProjectsTempData, renderTaskForm(cancelForm, submitTask, taskDetailsObj));
+  currentPageRenderer(
+    toDoListProjectsTempData,
+    renderTaskForm(cancelForm, submitTask, taskDetailsObj)
+  );
 }
 
 function cancelForm() {
-  const placeHolder = document.createElement('div');
+  const placeHolder = document.createElement("div");
   currentPageRenderer(toDoListProjectsTempData, placeHolder);
 }
 
 function backToProjectTasks(project) {
-  currentPageRenderer(toDoListProjectsTempData, renderSelectedProjectTasks(project, taskSelected, taskDeleted));
+  currentPageRenderer(
+    toDoListProjectsTempData,
+    renderSelectedProjectTasks(project, taskSelected, taskDeleted)
+  );
 }
 
 export { init };

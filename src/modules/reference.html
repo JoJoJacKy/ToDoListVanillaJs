@@ -1,179 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
-  <!-- Basic Page Needs
+  <head>
+    <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title>To Do List</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8" />
+    <title>To Do List</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-  <!-- Mobile Specific Metas
+    <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- FONT
+    <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-  <!-- CSS
+    <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="../../dist/css/normalize.css">
-  <link rel="stylesheet" href="../../dist/css/skeleton.css">
-  <link rel="stylesheet" href="../../dist/css/utilities.css">
-  <link rel="stylesheet" href="../../dist/css/style.css">
+    <link rel="stylesheet" href="../../dist/css/normalize.css" />
+    <link rel="stylesheet" href="../../dist/css/skeleton.css" />
+    <link rel="stylesheet" href="../../dist/css/utilities.css" />
+    <link rel="stylesheet" href="../../dist/css/style.css" />
 
-  <!-- Favicon
+    <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="../dist/images/favicon.png">
+    <link rel="icon" type="image/png" href="../dist/images/favicon.png" />
 
-  <!-- JavaScript
+    <!-- JavaScript
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <!-- <script src="main.js" defer></script> -->
-
-</head>
-<body>
-
-  <!-- Primary Page Layout
+    <!-- <script src="main.js" defer></script> -->
+  </head>
+  <body>
+    <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-  <!-- Navbar Section -->
+    <!-- Navbar Section -->
     <section class="navbar flex">
-        <h1 class="text-center">To Do List</h1>
+      <h1 class="text-center">To Do List</h1>
     </section>
 
-  <section class="main-content container-u grid grid-2">
+    <section class="main-content container-u grid grid-2">
       <!-- Sidebar Content -->
-    <div class="sidebar p-2">
+      <div class="sidebar p-2">
         <div class="container text-center">
           <h6>Projects</h6>
         </div>
         <!-- All Projects Container -->
         <div class="sidebar-projects">
-            <div class="container u-full-width py-1">
-                <div class="sidebar-card">
-                    <img src="../../dist/images/list.svg" alt="" class="sidebar-card-icon">
-                    <div class="sidebar-card-title text-center">
-                        <span>My Cringe Project</span>
-                    </div>
-                    <img src="../../dist/images/delete.svg" alt="" class="sidebar-card-delete-icon">
-                </div>
+          <div class="container u-full-width py-1">
+            <div class="sidebar-card">
+              <img
+                src="../../dist/images/list.svg"
+                alt=""
+                class="sidebar-card-icon"
+              />
+              <div class="sidebar-card-title text-center">
+                <span>My Cringe Project</span>
+              </div>
+              <img
+                src="../../dist/images/delete.svg"
+                alt=""
+                class="sidebar-card-delete-icon"
+              />
             </div>
-            <div class="container u-full-width py-1">
-                <div class="sidebar-card">
-                    <img src="../../dist/images/list.svg" alt="" class="sidebar-card-icon">
-                    <div class="sidebar-card-title text-center">
-                        <span>My Cringe Project</span>
-                    </div>
-                    <img src="../../dist/images/delete.svg" alt="" class="sidebar-card-delete-icon">
-                </div>
+          </div>
+          <div class="container u-full-width py-1">
+            <div class="sidebar-card">
+              <img
+                src="../../dist/images/list.svg"
+                alt=""
+                class="sidebar-card-icon"
+              />
+              <div class="sidebar-card-title text-center">
+                <span>My Cringe Project</span>
+              </div>
+              <img
+                src="../../dist/images/delete.svg"
+                alt=""
+                class="sidebar-card-delete-icon"
+              />
             </div>
+          </div>
 
-            <!-- Last Child Always -->
-            <div class="sidebar-card-add-project">
-                <div class="container u-full-width py-1">
-                    <div class="sidebar-card">
-                        <img src="../../dist/images/add.svg" alt="" class="sidebar-card-icon">
-                        <div class="sidebar-card-title text-center">
-                            <span>Add New Project</span>
-                        </div>
-                    </div>
+          <!-- Last Child Always -->
+          <div class="sidebar-card-add-project">
+            <div class="container u-full-width py-1">
+              <div class="sidebar-card">
+                <img
+                  src="../../dist/images/add.svg"
+                  alt=""
+                  class="sidebar-card-icon"
+                />
+                <div class="sidebar-card-title text-center">
+                  <span>Add New Project</span>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Main Body Displaying The Content -->
-    <div class="main-body container">
-            
+      <!-- Main Body Displaying The Content -->
+      <div class="main-body container">
         <!-- The Project That Is Selected -->
         <div class="selected-project py-2">
-            <!-- Project Title -->
-            <div class="project-title-container">
-                <h6 class="text-center project-title">My Cringe Project</h6>
-                <img src="../../dist/images/edit.svg" alt="" class="project-title-edit-icon">
+          <!-- Project Title -->
+          <div class="project-title-container">
+            <h6 class="text-center project-title">My Cringe Project</h6>
+            <img
+              src="../../dist/images/edit.svg"
+              alt=""
+              class="project-title-edit-icon"
+            />
+          </div>
+          <!-- Tasks Go Here -->
+          <div class="project-list u-full-width">
+            <div class="project-list-item my-1">
+              <img
+                src="../../dist/images/right-arrow.svg"
+                alt=""
+                class="project-list-item-icon"
+              />
+              <div class="project-list-item-title">Title of Task here</div>
+              <img
+                src="../../dist/images/delete.svg"
+                alt=""
+                class="project-list-item-delete"
+              />
             </div>
-            <!-- Tasks Go Here -->
-            <div class="project-list u-full-width"> 
-                <div class="project-list-item my-1">
-                    <img src="../../dist/images/right-arrow.svg" alt="" class="project-list-item-icon">
-                    <div class="project-list-item-title">Title of Task here</div>
-                    <img src="../../dist/images/delete.svg" alt="" class="project-list-item-delete">
-                </div>
 
-                <!-- Last Child that always exists -->
-                <div class="project-list-add-item">
-                    <img src="../../dist/images/plus.svg" alt="" class="project-list-item-icon">
-                    <div class="project-list-item-title">Add a new task</div>
-                </div>
+            <!-- Last Child that always exists -->
+            <div class="project-list-add-item">
+              <img
+                src="../../dist/images/plus.svg"
+                alt=""
+                class="project-list-item-icon"
+              />
+              <div class="project-list-item-title">Add a new task</div>
             </div>
+          </div>
         </div>
-
-
 
         <!-- Details of a Task -->
         <div class="selected-task py-2">
-            <img src="../../dist/images/back-button.svg" alt="" class="selected-task-back-icon">
-            <img src="../../dist/images/edit.svg" alt="" class="selected-task-edit-icon">
-            <img src="../../dist/images/delete.svg" alt="" class="selected-task-delete-icon">
-            
-            <div class="task-title-container">
-                <h6 class="text-center task-title">My Cringe Task</h6>
-            </div>
-            <div class="task-description">
-                <p>
-                    Description: This is the task description
-                    Description: This is the task description
-                    Description: This is the task description
-                    Description: This is the task description
-                </p>
-            </div>
-            <div class="task-priority">
-                <p>Task Priority: High</p>
-            </div>
-            <div class="task-completion">
-                Task Completed: No
-            </div>
+          <img
+            src="../../dist/images/back-button.svg"
+            alt=""
+            class="selected-task-back-icon"
+          />
+          <img
+            src="../../dist/images/edit.svg"
+            alt=""
+            class="selected-task-edit-icon"
+          />
+          <img
+            src="../../dist/images/delete.svg"
+            alt=""
+            class="selected-task-delete-icon"
+          />
+
+          <div class="task-title-container">
+            <h6 class="text-center task-title">My Cringe Task</h6>
+          </div>
+          <div class="task-description">
+            <p>
+              Description: This is the task description Description: This is the
+              task description Description: This is the task description
+              Description: This is the task description
+            </p>
+          </div>
+          <div class="task-priority">
+            <p>Task Priority: High</p>
+          </div>
+          <div class="task-completion">Task Completed: No</div>
         </div>
 
         <!-- Form Creation of a New Project -->
         <form class="task-project-form my-2">
-            <h6 class="text-center">New Project</h6>
+          <h6 class="text-center">New Project</h6>
 
-            <label for="projectName">Project Name</label>
-            <input type="text" class="u-full-width project-input" id="projectName">
-            
-            <button class="button-primary">Cancel</button>
-            <input class="button-primary" type="submit" value="submit">
+          <label for="projectName">Project Name</label>
+          <input
+            type="text"
+            class="u-full-width project-input"
+            id="projectName"
+          />
+
+          <button class="button-primary">Cancel</button>
+          <input class="button-primary" type="submit" value="submit" />
         </form>
 
         <!-- Form Creation of a New Task -->
         <form class="task-project-form my-2">
-            <h6 class="text-center">New Task</h6>
+          <h6 class="text-center">New Task</h6>
 
-            <label for="taskName">Task Name</label>
-            <input type="text" class="u-full-width text-input" id="projectName">
+          <label for="taskName">Task Name</label>
+          <input type="text" class="u-full-width text-input" id="projectName" />
 
-            <label for="taskDescription">Description</label>
-            <textarea class="u-full-width task-input" placeholder="Why I need to finish this task..." id="taskDescription"></textarea>
+          <label for="taskDescription">Description</label>
+          <textarea
+            class="u-full-width task-input"
+            placeholder="Why I need to finish this task..."
+            id="taskDescription"
+          ></textarea>
 
-            <label for="taskPriority">Priority</label>
-            <select class="u-full-width task-input" id="taskPriority">
-                <option value="Option 1">High</option>
-                <option value="Option 2">Medium</option>
-                <option value="Option 3">Low</option>
-            </select>
+          <label for="taskPriority">Priority</label>
+          <select class="u-full-width task-input" id="taskPriority">
+            <option value="Option 1">High</option>
+            <option value="Option 2">Medium</option>
+            <option value="Option 3">Low</option>
+          </select>
 
-            <button class="button-primary">Cancel</button>
-            <input class="button-primary" type="submit" value="submit">
+          <button class="button-primary">Cancel</button>
+          <input class="button-primary" type="submit" value="submit" />
         </form>
+      </div>
+    </section>
 
-    </div>
-  </section>
-
-
-<!-- End Document
+    <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-</body>
+  </body>
 </html>

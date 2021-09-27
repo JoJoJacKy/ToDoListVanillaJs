@@ -1,146 +1,144 @@
 .container-u {
-    max-width: 1100px;
-    /* Centering the element (Top & Bottom 0; Left & Right auto) */
-    margin: 0 auto;
-    overflow: auto;
-    /* The padding affects the smaller screen size on the left and rights */
+  max-width: 1100px;
+  /* Centering the element (Top & Bottom 0; Left & Right auto) */
+  margin: 0 auto;
+  overflow: auto;
+  /* The padding affects the smaller screen size on the left and rights */
 }
 
 /* Utility Class of Flex */
 .flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .flex-column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 /* Utility Class of Grid */
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* Gap between the grid items */
-    /* 100% of height of the container */
-    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Gap between the grid items */
+  /* 100% of height of the container */
+  height: 100%;
 }
 
 .grid-center {
-    /* Height is required for these to take affect */
-    justify-content: center;
-    align-items: center;
+  /* Height is required for these to take affect */
+  justify-content: center;
+  align-items: center;
 }
 
 .grid-2 {
-    grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 3fr;
 }
 
 /* Text Styling */
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .text-bold {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 /* Margins and Paddings */
 /* Top and Bottom Margins */
 .my-1 {
-    /* rem is unit based of default font size (16px) */
-    margin: 1rem 0;
+  /* rem is unit based of default font size (16px) */
+  margin: 1rem 0;
 }
 .my-2 {
-    /* rem is unit based of default font size (16px) */
-    margin: 1.5rem 0;
+  /* rem is unit based of default font size (16px) */
+  margin: 1.5rem 0;
 }
 .my-3 {
-    /* rem is unit based of default font size (16px) */
-    margin: 2rem 0;
+  /* rem is unit based of default font size (16px) */
+  margin: 2rem 0;
 }
 .my-4 {
-    /* rem is unit based of default font size (16px) */
-    margin: 2.5rem 0;
+  /* rem is unit based of default font size (16px) */
+  margin: 2.5rem 0;
 }
 
 .my-5 {
-    /* rem is unit based of default font size (16px) */
-    margin: 3rem 0;
+  /* rem is unit based of default font size (16px) */
+  margin: 3rem 0;
 }
 /* All Around Margins */
 .m-1 {
-    /* rem is unit based of default font size (16px) */
-    margin: 1rem;
+  /* rem is unit based of default font size (16px) */
+  margin: 1rem;
 }
 .m-2 {
-    /* rem is unit based of default font size (16px) */
-    margin: 1.5rem;
+  /* rem is unit based of default font size (16px) */
+  margin: 1.5rem;
 }
 .m-3 {
-    /* rem is unit based of default font size (16px) */
-    margin: 2rem;
+  /* rem is unit based of default font size (16px) */
+  margin: 2rem;
 }
 .m-4 {
-    /* rem is unit based of default font size (16px) */
-    margin: 2.5rem;
+  /* rem is unit based of default font size (16px) */
+  margin: 2.5rem;
 }
 .m-5 {
-    /* rem is unit based of default font size (16px) */
-    margin: 3rem;
+  /* rem is unit based of default font size (16px) */
+  margin: 3rem;
 }
 
 /* Top and Bottom Paddings */
 .py-1 {
-    /* rem is unit based of default font size (16px) */
-    padding: 1rem 0;
+  /* rem is unit based of default font size (16px) */
+  padding: 1rem 0;
 }
 .py-2 {
-    /* rem is unit based of default font size (16px) */
-    padding: 1.5rem 0;
+  /* rem is unit based of default font size (16px) */
+  padding: 1.5rem 0;
 }
 .py-3 {
-    /* rem is unit based of default font size (16px) */
-    padding: 2rem 0;
+  /* rem is unit based of default font size (16px) */
+  padding: 2rem 0;
 }
 .py-4 {
-    /* rem is unit based of default font size (16px) */
-    padding: 2.5rem 0;
+  /* rem is unit based of default font size (16px) */
+  padding: 2.5rem 0;
 }
 
 .py-5 {
-    /* rem is unit based of default font size (16px) */
-    padding: 3rem 0;
+  /* rem is unit based of default font size (16px) */
+  padding: 3rem 0;
 }
 /* All Around Margins */
 .p-1 {
-    /* rem is unit based of default font size (16px) */
-    padding: 1rem;
+  /* rem is unit based of default font size (16px) */
+  padding: 1rem;
 }
 .p-2 {
-    /* rem is unit based of default font size (16px) */
-    padding: 1.5rem;
+  /* rem is unit based of default font size (16px) */
+  padding: 1.5rem;
 }
 .p-3 {
-    /* rem is unit based of default font size (16px) */
-    padding: 2rem;
+  /* rem is unit based of default font size (16px) */
+  padding: 2rem;
 }
 .p-4 {
-    /* rem is unit based of default font size (16px) */
-    padding: 2.5rem;
+  /* rem is unit based of default font size (16px) */
+  padding: 2.5rem;
 }
 .p-5 {
-    /* rem is unit based of default font size (16px) */
-    padding: 3rem;
+  /* rem is unit based of default font size (16px) */
+  padding: 3rem;
 }
 
-
 .active {
-    display: block;
+  display: block;
 }
 
 .remove {
-    display: none;
+  display: none;
 }
-

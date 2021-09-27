@@ -1,4 +1,4 @@
-import { init } from './modules/RenderUI';
+import { init } from "./modules/RenderUI";
 
 init();
 
