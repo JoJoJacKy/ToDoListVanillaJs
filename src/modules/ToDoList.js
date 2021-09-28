@@ -1,5 +1,3 @@
-import Project from "./Project";
-import Task from "./Task";
 
 class ToDoList {
   constructor() {
@@ -40,32 +38,25 @@ class ToDoList {
   }
 }
 
-// This is the "Temp Storage"
 
-const ToDoListTemp = new ToDoList();
+function updateToDoListStorage(toDoListObj) {
+  // Stringify the Object
+  const toDoListString = JSON.stringify(toDoListObj);
+  // Store the object
+  localStorage.setItem('todolist', toDoListString);
+  return
+}
 
-const tempProject1 = new Project("test1");
-const tempProject2 = new Project("test2");
-const tempProject3 = new Project("test3");
+function getToDoListStorage() {
+  const toDoListStored = localStorage.getItem('todolist');
+  // Returns the stringified object from localStorage as an actual JS Object
+  return JSON.parse(toDoListStored);
+}
 
-const tast1 = new Task("cwinge");
-tast1.setDescription("tast3tast3tast3tast3tast3tast3tast3tast3");
-tast1.setPriority("High");
+function initialToDoListStorage() {
+  const toDoListStored = localStorage.getItem('todolist');
+  if (toDoListStored === null) return null
+  return
+}
 
-const tast2 = new Task("fgnaifgnaEIOLfnile");
-tast2.setDescription("OOOOOOOawdaFAEFASEfASEFGOOOOOOOOOGA");
-tast2.setPriority("Low");
-
-const tast3 = new Task("vyak");
-tast3.setDescription("em Ipsum has been the industry's standard dummy text ever since the 1500");
-tast3.setPriority("Low");
-
-tempProject1.addTask(tast1);
-tempProject2.addTask(tast2);
-tempProject3.addTask(tast3);
-
-ToDoListTemp.addProject(tempProject1);
-ToDoListTemp.addProject(tempProject2);
-ToDoListTemp.addProject(tempProject3);
-
-export default ToDoListTemp;
+export { initialToDoListStorage, getToDoListStorage, updateToDoListStorage, ToDoList }

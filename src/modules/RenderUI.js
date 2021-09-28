@@ -1,7 +1,17 @@
 import Project from "./Project";
 import Task from "./Task";
+import { initialToDoListStorage, getToDoListStorage, updateToDoListStorage, ToDoList } from "./ToDoList";
 
-import ToDoListTemp from "./ToDoList";
+/* ========== CREATE INITIAL DATA ON FIRST LOAD ========== */
+if (initialToDoListStorage() === null) {
+  const toDoList = new ToDoList()
+  localStorage.setItem('todolist', JSON.stringify(toDoList));
+  console.log("all good mate");
+  console.log(getToDoListStorage());
+  console.log("all good mate");
+}
+
+// const ToDoListTemp = new ToDoList();
 
 /* ========== CACHEDOM ========== */
 const sideBarProjectsDOM = document.querySelector(".sidebar-projects");
