@@ -48,9 +48,10 @@ function updateToDoListStorage(toDoListObj) {
 }
 
 function getToDoListStorage() {
-  const toDoListStored = localStorage.getItem('todolist');
+  const toDoListStored = JSON.parse(localStorage.getItem('todolist'));
+  const tempCombo = Object.assign(toDoListObjectSolution, toDoListStored)
   // Returns the stringified object from localStorage as an actual JS Object
-  return JSON.parse(toDoListStored);
+  return tempCombo;
 }
 
 function initialToDoListStorage() {
@@ -58,5 +59,7 @@ function initialToDoListStorage() {
   if (toDoListStored === null) return null
   return
 }
+
+
 
 export { initialToDoListStorage, getToDoListStorage, updateToDoListStorage, ToDoList }

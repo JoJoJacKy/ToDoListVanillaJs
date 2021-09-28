@@ -3,15 +3,15 @@ import Task from "./Task";
 import { initialToDoListStorage, getToDoListStorage, updateToDoListStorage, ToDoList } from "./ToDoList";
 
 /* ========== CREATE INITIAL DATA ON FIRST LOAD ========== */
-if (initialToDoListStorage() === null) {
-  const toDoList = new ToDoList()
-  localStorage.setItem('todolist', JSON.stringify(toDoList));
-  console.log("all good mate");
-  console.log(getToDoListStorage());
-  console.log("all good mate");
-}
+// if (initialToDoListStorage() === null) {
+//   const toDoList = new ToDoList();
+//   localStorage.setItem('todolist', JSON.stringify(toDoList));
+// }
 
-// const ToDoListTemp = new ToDoList();
+// 1. Need to refactor the class functions
+
+// Temporary Data
+const ToDoListTemp = new ToDoList();
 
 /* ========== CACHEDOM ========== */
 const sideBarProjectsDOM = document.querySelector(".sidebar-projects");
