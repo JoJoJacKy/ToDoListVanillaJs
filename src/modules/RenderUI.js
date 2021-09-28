@@ -152,7 +152,7 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
   const taskData = projectData.tasks;
 
   const mainContentContainer = document.createElement("div");
-  mainContentContainer.classList.add("py-1");
+  mainContentContainer.classList.add("py-1", "fadeInTransition");
 
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("project-title-container");
@@ -205,7 +205,7 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
   addNewItemLast.classList.add("project-list-add-item");
   addNewItemLast.innerHTML = `
         <img src="images/plus.svg" alt="" class="project-list-item-icon">
-        <div class="project-list-item-title">Add New Task</div>
+        <div class="project-list-item-title add-item-title">Add New Task</div>
     `;
   mainContentContainer.appendChild(addNewItemLast);
 
@@ -215,7 +215,7 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
       deletedFunc(e.target.previousElementSibling.innerText); // Gets the title of the task
     } else if (
       e.target.classList.contains("project-list-add-item") ||
-      e.target.innerText === "Add a new task"
+      e.target.classList.contains("add-item-title")
     ) {
       console.log("adding new item!");
       currentPageRenderer(
@@ -241,7 +241,7 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
   const { priority } = task;
 
   const selectedTaskContainer = document.createElement("div");
-  selectedTaskContainer.classList.add("selected-task", "py-4", "my-5");
+  selectedTaskContainer.classList.add("selected-task", "py-4", "my-5", "fadeInTransition");
 
   selectedTaskContainer.innerHTML = `
         <img src="images/back-button.svg" alt="" class="selected-task-back-icon">
@@ -286,7 +286,7 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
 
 function renderProjectForm(cancelFunc, submitFunc, projectTitle = "") {
   const formContainer = document.createElement("form");
-  formContainer.classList.add("task-project-form", "my-5");
+  formContainer.classList.add("task-project-form", "my-5", "fadeInTransition");
   formContainer.innerHTML = `
         <h6 class="text-center">New Project</h6>
 
@@ -309,12 +309,13 @@ function renderProjectForm(cancelFunc, submitFunc, projectTitle = "") {
     cancelFunc();
   });
 
+
   return formContainer;
 }
 
 function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
   const formContainer = document.createElement("form");
-  formContainer.classList.add("task-project-form", "my-5");
+  formContainer.classList.add("task-project-form", "my-5", "fadeInTransition");
   if (Object.keys(taskDetailsObject).length === 0) {
     formContainer.innerHTML = `
         <h6 class="text-center">New Task</h6>
@@ -472,3 +473,4 @@ function backToProjectTasks(project) {
 }
 
 export { init };
+

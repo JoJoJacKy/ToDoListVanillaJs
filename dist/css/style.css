@@ -56,7 +56,15 @@ h6 {
   grid-template-columns: 1fr 3fr 1fr;
   justify-items: center;
   align-items: center;
+  transition: all 0.07s ease-in-out;
+  cursor: pointer;
 }
+
+
+.sidebar-card:active {
+  transform: scale(0.96);
+}
+
 
 .sidebar-card-title {
   margin-left: 10px;
@@ -71,24 +79,40 @@ h6 {
   /* Changing the color of the SVG */
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
+  transition: all 0.4s;
+}
+
+.sidebar-card:hover .sidebar-card-icon.add {
+  filter: invert(81%) sepia(58%) saturate(643%) hue-rotate(100deg) brightness(101%) contrast(101%);
+}
+.sidebar-card-title.add {
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.sidebar-card:hover .sidebar-card-title.add {
+  color: #0FFFD4;
 }
 
 .sidebar-card-delete-icon {
   visibility: hidden;
+  opacity: 0;
   margin-right: 5px;
   height: 22px;
   width: 22px;
   /* Changing the color of the SVG */
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
+  transition: all 0.4s;
 }
 /* Hover over parent, reveal delete icon */
 .sidebar-card:hover .sidebar-card-delete-icon {
   visibility: visible;
+  opacity: 1;
 }
 
 .sidebar-card-delete-icon:hover {
-  transform: scale(2.2);
+  transform: scale(1.10);
+  filter: invert(22%) sepia(50%) saturate(6503%) hue-rotate(338deg) brightness(85%) contrast(102%);
 }
 
 /* ========== MAIN BODY STYLING ========== */
@@ -124,6 +148,11 @@ h6 {
   width: 22px;
   filter: invert(22%) sepia(10%) saturate(3748%) hue-rotate(199deg)
     brightness(89%) contrast(94%);
+  transition: all 0.4s;
+}
+
+.project-title-edit-icon:hover {
+  transform: scale(1.15);
 }
 
 .project-list {
@@ -138,6 +167,13 @@ h6 {
   grid-template-columns: 1fr 6fr 1fr;
   justify-items: center;
   align-items: center;
+  cursor: pointer;
+
+  transition: all 0.07s ease-in-out;
+}
+
+.project-list-item:active {
+  transform: scale(0.96);
 }
 
 .project-list-item-icon {
@@ -155,19 +191,23 @@ h6 {
 
 .project-list-item-delete {
   visibility: hidden;
+  opacity: 0;
   height: 22px;
   width: 22px;
   /* Changing the color of the SVG */
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
+  transition: all 0.4s;
 }
 /* Hover over parent, reveal delete icon */
 .project-list-item:hover .project-list-item-delete {
   visibility: visible;
+  opacity: 1;
 }
 
 .project-list-item-delete:hover {
-  transform: scale(2.2);
+  transform: scale(1.10);
+  filter: invert(22%) sepia(50%) saturate(6503%) hue-rotate(338deg) brightness(85%) contrast(102%);
 }
 
 .project-list-add-item {
@@ -179,12 +219,32 @@ h6 {
   justify-items: center;
   align-items: center;
   color: var(--light-color);
+  cursor: pointer;
   
+  transition: all 0.07s ease-in-out;
 }
+
+.project-list-add-item:active {
+  transform: scale(0.96);
+}
+
 .project-list-add-item img {
   margin-bottom: 4px;
   height: 19px;
   width: 19px;
+  transition: all 0.4s ease-in-out;
+}
+
+.project-list-item-title {
+  transition: all 0.4s ease-in-out;
+}
+
+.project-list-add-item:hover img {
+  filter: invert(81%) sepia(58%) saturate(643%) hue-rotate(100deg) brightness(101%) contrast(101%);
+}
+
+.project-list-add-item:hover .project-list-item-title {
+  color: #0FFFD4;
 }
 
 /* ========== TASKS DETAILS STYLING ========== */
@@ -206,6 +266,12 @@ h6 {
   width: 25px;
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
+  transition: all 0.4s;
+}
+
+.selected-task-back-icon:hover {
+  filter: invert(81%) sepia(58%) saturate(643%) hue-rotate(100deg) brightness(101%) contrast(101%);
+  transform: scale(1.10);
 }
 
 .selected-task-edit-icon {
@@ -216,6 +282,12 @@ h6 {
   width: 25px;
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
+  transition: all 0.4s;
+}
+
+.selected-task-edit-icon:hover {
+  filter: invert(81%) sepia(58%) saturate(643%) hue-rotate(100deg) brightness(101%) contrast(101%);
+  transform: scale(1.10);
 }
 
 .selected-task-delete-icon {
@@ -226,6 +298,12 @@ h6 {
   width: 25px;
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
+  transition: all 0.4s;
+}
+
+.selected-task-delete-icon:hover {
+  transform: scale(1.10);
+  filter: invert(22%) sepia(50%) saturate(6503%) hue-rotate(338deg) brightness(85%) contrast(102%);
 }
 
 /* ========== FORM STYLING ========== */
@@ -243,4 +321,18 @@ h6 {
 .task-project-form > textarea,
 .task-project-form > select {
   color: var(--primary-color);
+}
+
+.fadeInTransition {
+  opacity: 0;
+  animation: fadeIn 0.15s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
