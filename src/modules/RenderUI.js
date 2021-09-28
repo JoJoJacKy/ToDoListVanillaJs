@@ -70,10 +70,6 @@ function initialPageRender(projects) {
   const placeHolder = document.createElement("div");
   renderSideBar(sideBarProjectsDOM, projects);
   renderToMainBody(mainBodyDOM, placeHolder);
-  // renderToMainBody(mainBodyDOM, renderSelectedProjectTasks(toDoListProjectsTempData[0], taskSelected, taskDeleted));
-  // renderToMainBody(mainBodyDOM, renderSelectedTask(toDoListProjectsTempData[0].getTasks()[1]));
-  // renderToMainBody(mainBodyDOM, renderProjectForm());
-  // renderToMainBody(mainBodyDOM, renderTaskForm());
 }
 
 // This is the function that will be called the majority of the time
@@ -209,7 +205,7 @@ function renderSelectedProjectTasks(projectData, selectedFunc, deletedFunc) {
   addNewItemLast.classList.add("project-list-add-item");
   addNewItemLast.innerHTML = `
         <img src="images/plus.svg" alt="" class="project-list-item-icon">
-        <div class="project-list-item-title">Add a new task</div>
+        <div class="project-list-item-title">Add New Task</div>
     `;
   mainContentContainer.appendChild(addNewItemLast);
 
@@ -290,12 +286,12 @@ function renderSelectedTask(task, backFunc, editFunc, deleteFunc, currentProj) {
 
 function renderProjectForm(cancelFunc, submitFunc, projectTitle = "") {
   const formContainer = document.createElement("form");
-  formContainer.classList.add("task-project-form", "my-4");
+  formContainer.classList.add("task-project-form", "my-5");
   formContainer.innerHTML = `
         <h6 class="text-center">New Project</h6>
 
         <label for="projectName">Project Name</label>
-        <input type="text" class="u-full-width project-input" id="projectName" value="${projectTitle}">
+        <input type="text" class="u-full-width project-input" id="projectName" value="${projectTitle}" required maxlength="18">
         
         <button class="button-primary" id="cancel">Cancel</button>
         <input class="button-primary" type="submit" value="submit">
@@ -318,16 +314,16 @@ function renderProjectForm(cancelFunc, submitFunc, projectTitle = "") {
 
 function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
   const formContainer = document.createElement("form");
-  formContainer.classList.add("task-project-form", "my-4");
+  formContainer.classList.add("task-project-form", "my-5");
   if (Object.keys(taskDetailsObject).length === 0) {
     formContainer.innerHTML = `
         <h6 class="text-center">New Task</h6>
 
         <label for="taskName">Task Name</label>
-        <input type="text" class="u-full-width text-input" id="taskName">
+        <input type="text" class="u-full-width text-input" id="taskName" required maxlength="30">
 
         <label for="taskDescription">Description</label>
-        <textarea class="u-full-width task-input" placeholder="Why I need to finish this task..." id="taskDescription"></textarea>
+        <textarea class="u-full-width task-input" placeholder="Describe why you need to finish this task..." id="taskDescription" rows="4" cols="25" wrap="hard" maxlength="574"></textarea>
 
         <label for="taskPriority">Priority</label>
         <select class="u-full-width task-input" id="taskPriority">
@@ -344,10 +340,10 @@ function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
         <h6 class="text-center">New Task</h6>
 
         <label for="taskName">Task Name</label>
-        <input type="text" class="u-full-width text-input" id="taskName" value="${taskDetailsObject.name}">
+        <input type="text" class="u-full-width text-input" id="taskName" value="${taskDetailsObject.name}" required maxlength="30">
 
         <label for="taskDescription">Description</label>
-        <textarea class="u-full-width task-input" id="taskDescription">${taskDetailsObject.description}</textarea>
+        <textarea class="u-full-width task-input" id="taskDescription" placeholder="Describe why you need to finish this task..." rows="4" cols="25" wrap="hard" maxlength="574">${taskDetailsObject.description}</textarea>
 
         <label for="taskPriority">Priority</label>
         <select class="u-full-width task-input" id="taskPriority">
@@ -370,7 +366,7 @@ function renderTaskForm(cancelFunc, submitFunc, taskDetailsObject = {}) {
       e.path[1].childNodes[1].childNodes[13].options[
         e.path[1].childNodes[1].childNodes[13].selectedIndex
       ].innerText; // prior
-    submitTask(taskName, taskDesc, taskPriority);
+      submitFunc(taskName, taskDesc, taskPriority);
   });
 
   formContainer.querySelector("#cancel").addEventListener("click", (e) => {

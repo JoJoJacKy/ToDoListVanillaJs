@@ -76,8 +76,8 @@ h6 {
 .sidebar-card-delete-icon {
   visibility: hidden;
   margin-right: 5px;
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   /* Changing the color of the SVG */
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
@@ -155,8 +155,8 @@ h6 {
 
 .project-list-item-delete {
   visibility: hidden;
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   /* Changing the color of the SVG */
   filter: invert(91%) sepia(3%) saturate(4413%) hue-rotate(179deg)
     brightness(112%) contrast(97%);
@@ -179,9 +179,10 @@ h6 {
   justify-items: center;
   align-items: center;
   color: var(--light-color);
+  
 }
 .project-list-add-item img {
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   height: 19px;
   width: 19px;
 }

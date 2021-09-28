@@ -49,7 +49,7 @@ const tempProject2 = new Project("test2");
 const tempProject3 = new Project("test3");
 
 const tast1 = new Task("cwinge");
-tast1.setDescription("OOOOOOOOOOOOOOOOOGA");
+tast1.setDescription("tast3tast3tast3tast3tast3tast3tast3tast3");
 tast1.setPriority("High");
 
 const tast2 = new Task("fgnaifgnaEIOLfnile");
@@ -57,8 +57,8 @@ tast2.setDescription("OOOOOOOawdaFAEFASEfASEFGOOOOOOOOOGA");
 tast2.setPriority("Low");
 
 const tast3 = new Task("vyak");
-tast2.setDescription("deeznuts");
-tast2.setPriority("Low");
+tast3.setDescription("em Ipsum has been the industry's standard dummy text ever since the 1500");
+tast3.setPriority("Low");
 
 tempProject1.addTask(tast1);
 tempProject2.addTask(tast2);
